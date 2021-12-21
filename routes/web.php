@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,9 @@ Route::delete('/delete-book/{id}', [BookController::class, 'deleteBook'])->name(
 Route::get('/hello', function () {
     echo('Hello World');
 });
+
+Auth::routes();
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
